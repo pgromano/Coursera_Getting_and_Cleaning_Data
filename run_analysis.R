@@ -37,3 +37,19 @@ activity$Activity <- factor(x=activity$Activity, labels=activity_labels)
 
 # Write to file
 write.table(activity, 'tidy_data.txt', row.names=FALSE)
+
+# Create subsets of mean value of
+n_features = dim(activity)[2]
+activity_split <- split(activity[,1:n_features-1], activity$Activity)
+
+activity_means <- as.data.frame(
+    rbind(
+        colMeans(activity_split[[1]], na.rm=TRUE),
+        colMeans(activity_split[[2]], na.rm=TRUE),
+        colMeans(activity_split[[3]], na.rm=TRUE),
+        colMeans(activity_split[[4]], na.rm=TRUE),
+        colMeans(activity_split[[5]], na.rm=TRUE),
+        colMeans(activity_split[[6]], na.rm=TRUE)
+    )
+)
+activity_means$Activity <- c('WALKING','WALKING_UPSTAIRS','WALKING_DOWNSTAIRS','SITTING','STANDING','LAYING')
