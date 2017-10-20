@@ -1,3 +1,11 @@
+# Check for dependencies
+if(!require(tidyr)){install.packages('tidyr')}
+if(!require(dplyr)){install.packages('dplyr')}
+
+# Load libraries
+library(tidyr)
+library(dplyr)
+
 # Check if activity data exists
 if(!dir.exists('UCI HAR Dataset')){
     # Check if activity zip file has been downloaded
@@ -34,12 +42,15 @@ activity <- rbind(
 
 # Rename activities to descriptive labels
 activity$Activity <- factor(x=activity$Activity, labels=activity_labels)
+n_features = dim(activity)[2]
+
+# Tidy data
+activity_tidy <- activity %>% gather(variable, value, names(activity[,1:n_features-1]), na.rm=TRUE)
 
 # Write to file
-write.table(activity, 'tidy_data.txt', row.names=FALSE)
+write.table(activity_tidy, 'tidy_data.txt', row.names=FALSE)
 
 # Create subsets of mean value of
-n_features = dim(activity)[2]
 activity_split <- split(activity[,1:n_features-1], activity$Activity)
 
 activity_means <- as.data.frame(
