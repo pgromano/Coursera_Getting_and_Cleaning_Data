@@ -1,6 +1,7 @@
 # Human Activity Recognition Using Smartphones: Reduced Datasets
----
+
 ### Original Dataset Authors
+
 Jorge L. Reyes-Ortiz $^{1,2}$, Davide Anguita $^1$, Alessandro Ghio $^1$, Luca Oneto $^1$ and Xavier Parra $^2$
 1. Smartlab - Non-Linear Complex Systems Laboratory
 DITEN - University  degli Studi di Genova, Genoa (I-16145), Italy.
@@ -8,10 +9,13 @@ DITEN - University  degli Studi di Genova, Genoa (I-16145), Italy.
 
 Universitat Politicnica de Catalunya (BarcelonaTech). Vilanova i la Geltr (08800), Spain
 activityrecognition@smartlab.ws
+
 ---
+
 **Modified by**:
 [P.G. Romano][1]
 Oct 20, 2017
+
 ---
 
 The [original dataset][2] contained accelerometer and gyroscopic data in time (t) and fourier (f) units. The **R** analysis script, `run_analysis.R` will download and tidy this data for simplified use. Training and test data are appended, and only the parameter means and standard deviation are kept, mean() and std() respectively.
